@@ -33,7 +33,6 @@
 		"tuple": "cpp",
 		"type_traits": "cpp",
 		"utility": "cpp",
-		"fstream": "cpp",
 		"initializer_list": "cpp",
 		"iosfwd": "cpp",
 		"iostream": "cpp",
@@ -45,6 +44,5 @@
 		"stdexcept": "cpp",
 		"streambuf": "cpp",
 		"typeinfo": "cpp"
-	},
-	"C_Cpp.errorSquiggles": "disabled"
+	}
 }
