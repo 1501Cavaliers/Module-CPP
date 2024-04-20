@@ -6,7 +6,7 @@
 /*   By: flavian <flavian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 14:08:39 by flavian           #+#    #+#             */
-/*   Updated: 2024/03/17 15:25:29 by flavian          ###   ########.fr       */
+/*   Updated: 2024/04/20 15:13:38 by flavian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ bool	PhoneBook::START(void)
 
 bool	PhoneBook::ADD(void)
 {
-	this->contacts[this->i];
 	int	y = 0;
 	std::string	buf;
+	// this->contacts[this->i];
 
 	if (this->i > 7)
 		this->i = 0;
