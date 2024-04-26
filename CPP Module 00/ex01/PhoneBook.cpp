@@ -5,19 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: flavian <flavian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 14:08:39 by flavian           #+#    #+#             */
-/*   Updated: 2024/04/20 15:13:38 by flavian          ###   ########.fr       */
+/*   Created: 2024/04/26 13:31:13 by flavian           #+#    #+#             */
+/*   Updated: 2024/04/26 15:51:05 by flavian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook()
 {
-	this->contacts;
-	this->i = 0;
-	this->size;
+	i = 0;
+	size = 0;
 }
+
+PhoneBook::~PhoneBook(){}
 
 bool	PhoneBook::START(void)
 {
@@ -25,90 +26,142 @@ bool	PhoneBook::START(void)
 
 	while (1)
 	{
-		std::cout << "Enter command : ";
-		std::getline(std::cin, buf);
+		buf = PhoneBook::my_getline("Enter Command");
 		if (std::cin.eof())
-			PhoneBook::EXIT();
+			exit (1);
 		if (buf == "ADD")
-			PhoneBook::ADD();
+			PhoneBook::add();
 		else if (buf == "SEARCH")
-			PhoneBook::SEARCH();
+			PhoneBook::search();
 		else if (buf == "EXIT")
-			PhoneBook::EXIT();
+			exit (1);
 	}
 	return (1);
 }
 
-bool	PhoneBook::ADD(void)
+void	PhoneBook::input_info()
 {
-	int	y = 0;
-	std::string	buf;
-	// this->contacts[this->i];
+	std::string	str = "";
 
-	if (this->i > 7)
-		this->i = 0;
-
-	while (y < 5)
-		y = this->contacts[this->i].set_info(y, my_getline(this->tab[y]));
-
-	this->i++;
-
-	if (this->size < 8)
-		this->size++;
-	
-	return (1);
+	while (str == "")
+	{
+		str = PhoneBook::my_getline("Enter first name");
+		if (std::cin.eof())
+			exit (1);
+	}
+	Repertory[i].setName(str);
+	str = "";
+	while (str == "")
+	{
+		str = PhoneBook::my_getline("Enter last name");
+		if (std::cin.eof())
+			exit (1);
+	}
+	Repertory[i].setLast_name(str);
+	str = "";
+	while (str == "")
+	{
+		str = PhoneBook::my_getline("Enter nickname");
+		if (std::cin.eof())
+			exit (1);
+	}
+	Repertory[i].setNickname(str);
+	str = "";
+	while (str == "")
+	{
+		str = PhoneBook::my_getline("Enter phone number");
+		if (std::cin.eof())
+			exit (1);
+	}
+	Repertory[i].setPhone_number(str);
+	str = "";
+	while (str == "")
+	{
+		str = PhoneBook::my_getline("Enter darkest secret");
+		if (std::cin.eof())
+			exit (1);
+	}
+	Repertory[i].setDarkest_secret(str);
 }
 
-bool	PhoneBook::SEARCH(void)
+void	PhoneBook::add()
+{
+	input_info();
+	i = ++i % 8;
+	if (size < 8)
+		size++;
+}
+
+std::string	get_element(std::string str)
+{
+	if (str.length() > 10)
+		return (str.substr(0, 9) + ".");
+	return (str);
+
+}
+
+bool	PhoneBook::is_whitespace(std::string buf)
 {
 	int	i = 0;
-	int	y = 0;
-	std::string	tab[3];
-	std::string	buf;
-	int	index;
-	
-	if (this->size == 0)
+
+	while (buf[i])
 	{
-		std::cout << "Phonebook is empty !" << std::endl;
-		return (0);
-	}
-	std::cout << "     index|first name| last name|  nickname|" << std::endl;
-	while (i < this->size)
-	{
-		std::cout << "         " << (char) i + 1 << "|";
-		while (y < 3)
-		{
-			tab[y] = PhoneBook::hanlde_string(this->contacts[i].get_info(y));
-				std::cout << tab[y] << '|';
-			y++;
-		}
-		y = 0;
-		std::cout << std::endl;
+		if (buf[i] < 9 && buf[i] > 13 || buf[i] != 32)
+			return (0);
 		i++;
-	}
-	while (1)
-	{
-		buf = PhoneBook::my_getline("Enter index");
-		if (!PhoneBook::is_index(buf))
-			std::cout << "Wrong index, try again !" << std::endl;
-		else
-		{
-			index = buf[0] - 48;
-			while (y < 5)
-			{
-				std::cout << this->tab[y] << " : " << this->contacts[index - 1].get_info(y) << std::endl;
-				y++;
-			}
-			y = 0;
-			break ;
-		}
 	}
 	return (1);
 }
 
-void	PhoneBook::EXIT(void)
+std::string	PhoneBook::my_getline(std::string str)
 {
-	exit (1);
+	std::string	buf;
+
+	while (buf == "" || PhoneBook::is_whitespace(buf))
+	{
+		std::cout << str << " : ";
+		std::getline(std::cin, buf);
+		if (std::cin.eof())
+			exit (1);
+	}
+	return (buf);
 }
 
-PhoneBook::~PhoneBook(void){}
+void	PhoneBook::search()
+{
+	int			x = 0;
+	std::string	str = "";
+	while (x < size)
+	{
+		std::cout << std::setw(10) << x + 1 << '|';
+		std::cout << std::setw(10) << get_element(Repertory[x].getName()) << '|';
+		std::cout << std::setw(10) << get_element(Repertory[x].getLast_name()) << '|';
+		std::cout << std::setw(10) << get_element(Repertory[x].getNickname()) << '|';
+		std::cout << '\n';
+		x++;
+	}
+	std::cout << "Put the desired index :";
+	std::getline(std::cin, str);
+	if (std::cin.eof())
+	{
+		str = "";
+		std::cin.clear();
+			std::cout << std::endl;
+	}
+	if (str.empty())
+		std::cout << "You have enter no index, please SEARCH again." << std::endl;
+	else
+	{
+		x = std::atoi(str.c_str()) - 1;
+		if (x >= 0 && x < size)
+		{
+			std::cout << "Name : " << Repertory[x].getName() << std::endl;
+			std::cout << "Last name : " << Repertory[x].getLast_name() << std::endl;
+			std::cout << "Cool nickname : " << Repertory[x].getNickname() << std::endl;
+			std::cout << "Phone number : " << Repertory[x].getPhone_number() << std::endl;
+			std::cout << "Darkest secret : " << Repertory[x].getDarkest_secret() << std::endl;
+		}
+		else
+			std::cout << "Invalide index, please SEARCH again." << std::endl;
+	}
+}

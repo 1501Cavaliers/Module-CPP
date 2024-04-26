@@ -1,23 +1,26 @@
-NAME = PhoneBook
-C++ = g++
+NAME = My_Awesome_PhoneBook
+CC = c++
 FLAGS = -Wall -Werror -Wextra -std=c++98
+SRCS =	main.cpp		\
+		Contact.cpp		\
+		PhoneBook.cpp
 
-SOURCES = PhoneBook.cpp \
-		PhoneBook.utils.cpp \
-		Contact.cpp \
-		main.cpp \
+OBJS = ${SRCS:.cpp=.o}
 
-OBJECTS = $(SOURCES:.cpp=.o)
+all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	$(C++) $(FLAGS) $(OBJECTS) -o $(NAME)
-
-re: $(NAME)
+$(NAME): $(OBJS)
+		$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 clean:
-	rm -f $(OBJECTS)
+		rm -f $(OBJS)
 
-fclean : clean
-	rm -f $(NAME)
+fclean: clean
+		rm -f $(NAME)
 
-all: clean flcean re
+re: fclean all
+
+po: all clean
+
+.PHONY: all clean fclean re po
+

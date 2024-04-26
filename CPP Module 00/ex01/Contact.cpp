@@ -5,33 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: flavian <flavian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 14:08:37 by flavian           #+#    #+#             */
-/*   Updated: 2024/03/16 17:02:42 by flavian          ###   ########.fr       */
+/*   Created: 2024/04/26 13:31:20 by flavian           #+#    #+#             */
+/*   Updated: 2024/04/26 13:31:21 by flavian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact(void)
+std::string Contact::getName()const
 {
-	// this->info;
-	this->index = 0;
+	return (name);
 }
 
-int	Contact::set_info(int i, std::string str)
+std::string Contact::getLast_name()const
 {
-	if (i < 0)
-		return (-1);
-	this->info[i] = str;
-	return (i + 1);
+	return (last_name);
 }
 
-std::string	Contact::get_info(int i) const
+std::string Contact::getNickname()const
 {
-	if (i > 4)
-		return (NULL);
-	return (this->info[i]);
+	return (nickname);
 }
 
+std::string Contact::getPhone_number()const
+{
+	return (phone_number);
+}
 
-Contact::~Contact(void){}
+std::string Contact::getDarkest_secret()const
+{
+	return (darkest_secret);
+}
+
+void	Contact::setName(std::string str)
+{
+	this->name = str;
+}
+
+void	Contact::setLast_name(std::string str)
+{
+	this->last_name = str;
+}
+
+void	Contact::setNickname(std::string str)
+{
+	this->nickname = str;
+}
+
+void	Contact::setPhone_number(std::string str)
+{
+	this->phone_number = str;
+}
+
+void	Contact::setDarkest_secret(std::string str)
+{
+	this->darkest_secret = str;;
+}

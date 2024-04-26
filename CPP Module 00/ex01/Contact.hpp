@@ -5,30 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: flavian <flavian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 14:08:38 by flavian           #+#    #+#             */
-/*   Updated: 2024/03/16 17:00:15 by flavian          ###   ########.fr       */
+/*   Created: 2024/04/26 13:31:18 by flavian           #+#    #+#             */
+/*   Updated: 2024/04/26 13:31:19 by flavian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
-#define CONTACT_HPP
+# define CONTACT_HPP
 
-#include <iostream>
+# include <iostream> 
+# include <iomanip>
 
 class Contact
 {
-	public :
+private:
+	std::string	name;
+	std::string	last_name;
+	std::string	nickname;
+	std::string	phone_number;
+	std::string	darkest_secret;
 
-	Contact(void);
-	~Contact(void);
-	int	set_info(int i, std::string str);
-	std::string	get_info(int i) const;
+public:
 
-
-	private :
-
-	std::string	info[5];
-	int		index;
+	std::string getName()const;
+	std::string getLast_name()const;
+	std::string getNickname()const;
+	std::string getPhone_number()const;
+	std::string getDarkest_secret()const;
+	void setName(std::string str);
+	void setLast_name(std::string str);
+	void setNickname(std::string str);
+	void setPhone_number(std::string str);
+	void setDarkest_secret(std::string str);
 };
+
+
+
+
 
 #endif

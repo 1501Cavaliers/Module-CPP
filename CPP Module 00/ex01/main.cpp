@@ -5,19 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: flavian <flavian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 12:46:45 by flavian           #+#    #+#             */
-/*   Updated: 2024/03/16 17:14:50 by flavian          ###   ########.fr       */
+/*   Created: 2024/04/26 13:30:56 by flavian           #+#    #+#             */
+/*   Updated: 2024/04/26 15:24:58 by flavian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-int	main(void)
+int	main()
 {
-	PhoneBook	repertory;
+	PhoneBook 	PhoneBook;
 
-	repertory.START();
-	// std::cout << "OUT OF MAIN" << std::endl;
-	return (1);
+	PhoneBook.START();
+	// std::string	str= "";
+
+	// while (str != "EXIT")
+	// {
+	// 	str = PhoneBook::my_getline("Enter first name");
+	// 	if (std::cin.eof())
+	// 		exit (1);
+	// 	if (str == "ADD")
+	// 		PhoneBook.add();
+	// 	else if (str == "SEARCH")
+	// 		PhoneBook.search();
+	// 	else if (str != "EXIT")
+	// 		std::cout << "I don't understand." << std::endl;
+	// }
+	return (0);
 }
