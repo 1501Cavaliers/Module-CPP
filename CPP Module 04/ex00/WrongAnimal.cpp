@@ -49,3 +49,10 @@ void	WrongAnimal::makeSound(void) const
 {
 	std::cout << "Fumer provoque 9 cancers du poumon sur 10" << std::endl;
 }
+
+WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &rhs)
+{
+	std::cout << "WrongAnimal Copy assignement operator called" << std::endl;
+	this->_type = rhs.getType();
+	return (*this);
+}

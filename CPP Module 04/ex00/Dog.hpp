@@ -6,7 +6,7 @@
 /*   By: flavian <flavian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 14:50:04 by flavian           #+#    #+#             */
-/*   Updated: 2024/04/13 15:04:29 by flavian          ###   ########.fr       */
+/*   Updated: 2024/06/13 11:31:40 by flavian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ public:
 	Dog(std::string type);
 	Dog(const Dog& tmp);
 	~Dog(void);
-
+	Dog	&operator=(const Dog &rhs);
+	
 	virtual void	makeSound() const;
 };
 

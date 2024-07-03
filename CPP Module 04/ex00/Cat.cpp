@@ -6,7 +6,7 @@
 /*   By: flavian <flavian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 14:46:32 by flavian           #+#    #+#             */
-/*   Updated: 2024/04/13 16:10:24 by flavian          ###   ########.fr       */
+/*   Updated: 2024/06/13 11:31:07 by flavian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,11 @@ Cat::~Cat(void)
 void	Cat::makeSound(void) const
 {
 	std::cout << "Meow meow meow !!" << std::endl;
+}
+
+Cat	&Cat::operator=(const Cat &rhs)
+{
+	std::cout << "Cat Copy assignement operator called" << std::endl;
+	this->_type = rhs.getType();
+	return (*this);
 }

@@ -39,3 +39,10 @@ void	WrongDog::makeSound(void) const
 {
 	std::cout << "piou piou piou" << std::endl;
 }
+
+WrongDog	&WrongDog::operator=(const WrongDog &rhs)
+{
+	std::cout << "WrongDog Copy assignement operator called" << std::endl;
+	this->_type = rhs.getType();
+	return (*this);
+}

@@ -40,3 +40,10 @@ void	WrongCat::makeSound(void) const
 {
 	std::cout << "Téma la taille du flow" << std::endl;
 }
+
+WrongCat	&WrongCat::operator=(const WrongCat &rhs)
+{
+	std::cout << "WrongCat Copy assignement operator called" << std::endl;
+	this->_type = rhs.getType();
+	return (*this);
+}

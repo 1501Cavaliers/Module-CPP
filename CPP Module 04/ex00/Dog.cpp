@@ -6,7 +6,7 @@
 /*   By: flavian <flavian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 14:50:30 by flavian           #+#    #+#             */
-/*   Updated: 2024/04/13 16:10:36 by flavian          ###   ########.fr       */
+/*   Updated: 2024/06/13 11:31:19 by flavian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,11 @@ Dog::~Dog(void)
 void	Dog::makeSound(void) const
 {
 	std::cout << "BARK BARK BARK !!" << std::endl;
+}
+
+Dog	&Dog::operator=(const Dog &rhs)
+{
+	std::cout << "Dog Copy assignement operator called" << std::endl;
+	this->_type = rhs.getType();
+	return (*this);
 }

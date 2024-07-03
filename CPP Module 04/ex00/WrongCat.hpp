@@ -22,6 +22,7 @@ public:
 	WrongCat(std::string type);
 	WrongCat(const WrongCat& tmp);
 	~WrongCat(void);
+	WrongCat	&operator=(const WrongCat &rhs);
 
 	virtual void	makeSound(void) const;
 };

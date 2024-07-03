@@ -10,8 +10,10 @@ SOURCES = main.cpp \
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
-NAME: $(OBJECTS)
-	g++ $(FLAGS) -o $(NAME) $(OBJECTS)
+all: $(NAME)
+
+$(NAME): $(OBJECTS)
+	c++ $(FLAGS) -o $(NAME) $(OBJECTS)
 
 clean:
 	rm -f *.o
@@ -19,6 +21,6 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-re: $(NAME)
+re: fclean all
 
-all: clean fclean re
+.PHONY: all clean fclean re

@@ -22,6 +22,7 @@ public:
 	WrongDog(std::string type);
 	WrongDog(const WrongDog& tmp);
 	~WrongDog(void);
+	WrongDog	&operator=(const WrongDog &rhs);
 
 	virtual void	makeSound() const;
 };
