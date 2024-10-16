@@ -1,7 +1,8 @@
-NAME = ex00
+NAME = ex01
 FLAGS = -Wall -Wextra -Werror -std=c++98
 SOURCES = main.cpp \
-	Bureaucrat.cpp
+	Bureaucrat.cpp \
+	Form.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 

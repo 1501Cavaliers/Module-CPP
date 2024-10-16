@@ -1,7 +1,12 @@
-NAME = ex00
+NAME = ex03
 FLAGS = -Wall -Wextra -Werror -std=c++98
 SOURCES = main.cpp \
-	Bureaucrat.cpp
+	Bureaucrat.cpp \
+	AForm.cpp \
+	PresidentialPardonForm.cpp \
+	RobotomyRequestForm.cpp \
+	ShrubberyCreationForm.cpp \
+	Intern.cpp
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
